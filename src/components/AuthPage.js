@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-// import "./login.css";
+import "./AuthPage.css";
 
-function AuthPage() {
+function AuthPage({ onLogin }) {
   const [activeTab, setActiveTab] = useState("login");
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [showRegisterPassword, setShowRegisterPassword] = useState(false);
@@ -68,6 +68,7 @@ function AuthPage() {
 
       if (res.ok) {
         window.location.href = "/dashboard";
+        if (onLogin) onLogin();
       }
     } catch (err) {
       console.error(err);
